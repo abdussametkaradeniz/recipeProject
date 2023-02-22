@@ -11,8 +11,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height / 5;
+    final double width = MediaQuery.of(context).size.width / 4;
+    final double useWidth = MediaQuery.of(context).size.width / 6 + width;
     return Scaffold(
       backgroundColor: Colors.grey[290],
       body: SafeArea(
@@ -39,7 +39,56 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(height: 50),
-                //email
+
+                Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25.0),
+                      child: Container(
+                        width: useWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Name',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 25.0),
+                      child: Container(
+                        width: useWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 20.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Surname',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 10),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -48,8 +97,8 @@ class _SignInState extends State<SignIn> {
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
                       child: TextField(
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -59,7 +108,9 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
+
                 SizedBox(height: 10),
+
                 //password
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -111,14 +162,14 @@ class _SignInState extends State<SignIn> {
                   child: Container(
                     padding: EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
-                      color: Colors.deepPurple,
+                      color: Colors.yellow,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
                       child: Text(
                         'Sign In',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black87,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),
@@ -132,9 +183,9 @@ class _SignInState extends State<SignIn> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Not a member?'),
+                    Text('Do you have an account?'),
                     Text(
-                      ' Register now',
+                      ' Log In',
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,

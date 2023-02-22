@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     );
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.yellow,
       ),
       debugShowCheckedModeBanner: false,
       home: const SignIn(),
