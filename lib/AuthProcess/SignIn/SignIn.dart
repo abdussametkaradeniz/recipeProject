@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipeapp/Widgets/custom_button.dart';
+import 'package:recipeapp/Widgets/custom_text_field.dart';
+import 'package:recipeapp/Widgets/have_account_widget.dart';
+import 'package:recipeapp/Widgets/header_widget.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -21,177 +25,42 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.food_bank,
-                  size: 100,
+                const HeaderWidget(
+                  goodToSeeYouOrLogin: 'Good to see you.',
                 ),
-                SizedBox(height: 75),
-                //Welcome text
-                Text(
-                  "Welcome here!",
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 52,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "Good to see you.",
-                  style: TextStyle(fontSize: 18),
-                ),
-                SizedBox(height: 50),
-
                 Row(
-                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25.0),
-                      child: Container(
-                        width: useWidth,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 20.0),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Name',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  children: const [
+                    Expanded(
+                        flex: 49, child: CustomTextField(hintText: 'Name')),
                     Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 25.0),
-                      child: Container(
-                        width: useWidth,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 20.0),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Surname',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    Expanded(
+                        flex: 49, child: CustomTextField(hintText: 'Surname')),
                   ],
                 ),
 
-                SizedBox(height: 10),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(height: 10),
-
-                //password
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Password',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
                 const SizedBox(height: 10),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Confirm Password',
-                        ),
-                      ),
-                    ),
-                  ),
+                const CustomTextField(
+                  hintText: 'Email',
                 ),
-                SizedBox(height: 25),
+
+                const SizedBox(height: 10),
+
+                //password
+                const CustomTextField(hintText: 'Password'),
+                const SizedBox(height: 10),
+
+                const CustomTextField(hintText: 'Confirm Password'),
+                const SizedBox(height: 25),
 
                 //sign in
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    padding: EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
+                const CustomButton(btnText: 'Sign In'),
+                const SizedBox(height: 10),
 
                 //not a member
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Do you have an account?'),
-                    Text(
-                      ' Log In',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                const HaveAccountWidget(
+                  haveAccountText: 'Do you have an account?',
+                  logOrSign: 'Log In',
                 ),
               ],
             ),
