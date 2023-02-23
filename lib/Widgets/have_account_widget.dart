@@ -5,10 +5,12 @@ class HaveAccountWidget extends StatelessWidget {
     super.key,
     required this.haveAccountText,
     required this.logOrSign,
+    required this.onTap,
   });
 
   final String haveAccountText;
   final String logOrSign;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HaveAccountWidget extends StatelessWidget {
       children: [
         Text(haveAccountText),
         GestureDetector(
-          onTap: () {},
+          onTap: onTap,
           child: Text(
             ' $logOrSign',
             style: const TextStyle(

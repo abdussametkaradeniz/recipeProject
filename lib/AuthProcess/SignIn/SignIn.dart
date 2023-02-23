@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipeapp/AuthProcess/Login/Login.dart';
 import 'package:recipeapp/Widgets/custom_button.dart';
 import 'package:recipeapp/Widgets/custom_text_field.dart';
 import 'package:recipeapp/Widgets/have_account_widget.dart';
 import 'package:recipeapp/Widgets/header_widget.dart';
+import 'package:recipeapp/components/navigate.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -58,9 +60,13 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 10),
 
                 //not a member
-                const HaveAccountWidget(
+                HaveAccountWidget(
                   haveAccountText: 'Do you have an account?',
                   logOrSign: 'Log In',
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Login()));
+                  },
                 ),
               ],
             ),
