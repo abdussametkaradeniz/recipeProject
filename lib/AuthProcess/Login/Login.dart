@@ -35,7 +35,7 @@ class _LoginState extends State<Login> {
                       const CustomTextField(hintText: 'Password'),
                       const CustomButton(btnText: 'Log In'),
                       HaveAccountWidget(
-                        haveAccountText: 'Nedd you an account?',
+                        haveAccountText: 'Need an account?',
                         logOrSign: 'Sign In',
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
