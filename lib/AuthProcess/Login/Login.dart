@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapp/AuthProcess/SignIn/SignIn.dart';
+import 'package:recipeapp/Constant/ScreenSize.dart';
 import 'package:recipeapp/Widgets/custom_button.dart';
 import 'package:recipeapp/Widgets/custom_text_field.dart';
 import 'package:recipeapp/Widgets/have_account_widget.dart';
@@ -27,7 +28,7 @@ class _LoginState extends State<Login> {
                   goodToSeeYouOrLogin: 'Please Login.',
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: ScreenSize.logicalHeight / 4,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
