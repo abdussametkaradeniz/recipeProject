@@ -10,6 +10,28 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Column(
+          children: [
+            //top side
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  
+                )
+              ],
+            )
+            //profil area
+
+            //content area
+
+            //bottom bar
+          ],
+        ),
+      ),
+    );
   }
 }

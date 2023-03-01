@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:recipeapp/AuthProcess/Login/Login.dart';
 import 'package:recipeapp/AuthProcess/SignIn/SignIn.dart';
 import 'package:recipeapp/AuthProcess/promotion/Promotion.dart';
+import 'package:recipeapp/Constant/ScreenSize.dart';
+import 'package:recipeapp/TopBar/TopBar.dart';
+import 'package:recipeapp/UserPage/UserPage.dart';
 import 'package:recipeapp/components/navigate.dart';
 
 void main() {
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Login(),
+      home: const TopBar(),
     );
   }
 }
