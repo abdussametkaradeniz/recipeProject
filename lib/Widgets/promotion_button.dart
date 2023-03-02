@@ -1,0 +1,1 @@
+// Google, Facebook ve normal kayıt butonu

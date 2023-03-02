@@ -15,8 +15,6 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width / 4;
-    final double useWidth = MediaQuery.of(context).size.width / 6 + width;
     return Scaffold(
       backgroundColor: Colors.grey[290],
       body: SafeArea(

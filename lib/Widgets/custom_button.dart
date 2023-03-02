@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {},
             child: Padding(
               padding: const EdgeInsets.all(8.0),
