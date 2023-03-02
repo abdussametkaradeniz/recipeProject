@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.grey,
       ),
       debugShowCheckedModeBanner: false,
-      home: const TopBar(),
+      home: const UserPage(),
     );
   }
 }
