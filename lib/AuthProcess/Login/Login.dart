@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:recipeapp/AuthProcess/AuthService.dart';
 import 'package:recipeapp/AuthProcess/SignIn/SignIn.dart';
 import 'package:recipeapp/Constant/ScreenSize.dart';
+import 'package:recipeapp/MainPage/MainPage.dart';
 import 'package:recipeapp/Widgets/custom_button.dart';
 import 'package:recipeapp/Widgets/custom_text_field.dart';
 import 'package:recipeapp/Widgets/have_account_widget.dart';
@@ -15,6 +18,23 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final _focusEmail = FocusNode();
+  final _focusPassword = FocusNode();
+
+  driverFunction() {
+    unfocusFunction();
+  }
+
+  unfocusFunction() {
+    _focusEmail.unfocus();
+    _focusPassword.unfocus();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +52,28 @@ class _LoginState extends State<Login> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const CustomTextField(hintText: 'Email'),
-                      const CustomTextField(hintText: 'Password'),
-                      const CustomButton(btnText: 'Log In'),
+                      CustomTextField(
+                          hintText: 'Email',
+                          controller: _emailController,
+                          textFormFieldType: "Email"),
+                      CustomTextField(
+                          hintText: 'Password',
+                          controller: _passwordController,
+                          textFormFieldType: "Password"),
+                      CustomButton(
+                          btnText: 'Log In',
+                          function: () async {
+                            User? user = await AuthService.Login(
+                                email: _emailController.text,
+                                password: _passwordController.text);
+
+                            if (user != null) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MainPage(
+                                        user: user,
+                                      )));
+                            }
+                          }),
                       HaveAccountWidget(
                         haveAccountText: 'Need an account?',
                         logOrSign: 'Sign In',

@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  final User user;
+  const MainPage({required this.user, super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -10,6 +12,16 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Container(
+          width: 300,
+          height: 239,
+          decoration: BoxDecoration(
+            color: Colors.amber,
+          ),
+        ),
+      ],
+    );
   }
 }

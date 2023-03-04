@@ -4,8 +4,9 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.btnText,
+    required this.function,
   });
-
+  final Function function;
   final String btnText;
 
   @override
@@ -17,7 +18,9 @@ class CustomButton extends StatelessWidget {
       children: [
         Container(
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              function();
+            },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(

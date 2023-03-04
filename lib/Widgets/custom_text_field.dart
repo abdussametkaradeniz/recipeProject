@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:recipeapp/AuthProcess/Validator.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.hintText,
+    required this.controller,
+    required this.textFormFieldType,
   });
 
   final String hintText;
+  final TextEditingController controller;
+  final String textFormFieldType;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +26,13 @@ class CustomTextField extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0),
-          child: TextField(
-            obscureText: true,
+          child: TextFormField(
+            obscureText: textFormFieldType == "Password" ? true : false,
+            controller: controller,
+            validator: textFormFieldType == "Password"
+                ? (value) =>
+                    Validator.validatePassword(password: controller.text)
+                : (value) => Validator.validateEmail(email: controller.text),
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,

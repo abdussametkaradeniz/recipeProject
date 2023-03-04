@@ -8,7 +8,11 @@ import 'package:recipeapp/TopBar/TopBar.dart';
 import 'package:recipeapp/UserPage/UserPage.dart';
 import 'package:recipeapp/components/navigate.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
