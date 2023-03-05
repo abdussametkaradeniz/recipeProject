@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
                       CustomButton(
                           btnText: 'Log In',
                           function: () async {
-                            User? user = await AuthService.Login(
+                            User? user = await AuthService.LoginWithEmailAndPassword(
                                 email: _emailController.text,
                                 password: _passwordController.text);
 

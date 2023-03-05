@@ -1,23 +1,38 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recipeapp/AuthProcess/Login/Login.dart';
 import 'package:recipeapp/AuthProcess/SignIn/SignIn.dart';
 import 'package:recipeapp/AuthProcess/promotion/Promotion.dart';
 import 'package:recipeapp/Constant/ScreenSize.dart';
+import 'package:recipeapp/MainPage/MainPage.dart';
 import 'package:recipeapp/TopBar/TopBar.dart';
 import 'package:recipeapp/UserPage/UserPage.dart';
 import 'package:recipeapp/components/navigate.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:recipeapp/firebase_options.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+class RecipeApp extends StatefulWidget {
+  const RecipeApp({super.key});
+
+  @override
+  State<RecipeApp> createState() => _RecipeAppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class _RecipeAppState extends State<RecipeApp> {
+  late FirebaseAuth auth;
+  Widget currentPage = Promotion();
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    auth = FirebaseAuth.instance;
+    user = auth.currentUser;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +45,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Login(),
+      home: user == null ? Login() : MainPage(user: auth.currentUser!),
     );
   }
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const RecipeApp());
 }

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:recipeapp/AuthProcess/Login/Login.dart';
 
 class AuthService {
@@ -31,7 +32,7 @@ class AuthService {
   }
 
   //log in
-  static Future<User?> Login({
+  static Future<User?> LoginWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -44,6 +45,11 @@ class AuthService {
         password: password,
       );
       user = userCredential.user;
+      if (!user!.emailVerified) {
+        await user.sendEmailVerification();
+      } else {
+        print("Email dogrulanmis");
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -54,8 +60,10 @@ class AuthService {
     return user;
   }
 
-  static void signOut() {
+  static void signOut(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
     auth.signOut();
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => Login()));
   }
 }
